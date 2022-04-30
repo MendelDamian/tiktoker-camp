@@ -1,0 +1,15 @@
+/*.question-container {*/
+/*  background-color: var(--bs-gray-dark);*/
+/*  padding: 10px 2px;*/
+/*}*/
+
+/*h2 {*/
+/*  background-color: var(--bs-dark);*/
+/*  width: 75%;*/
+/*  padding: 10px 0;*/
+/*}*/
+
+.answer {
+  margin-top: 5px;
+  font-size: 1.25em;
+}

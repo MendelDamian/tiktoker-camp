@@ -1,0 +1,9 @@
+<div class="question-container d-flex flex-column col-md-10 col-xxl-6 mx-auto rounded">
+  <h2 class="rounded mx-auto">{{ data.title }}</h2>
+  <img src="{{ data.imgSrc }}" alt="Obraz poglądowy dla pytania" class="img-fluid">
+  <div class="answers-container d-flex justify-content-around flex-wrap">
+    <div class="answer col-5 rounded" *ngFor="let answer of data.answers; let i = index" (click)="vote(i)">
+      <span class="btn btn-danger w-100">{{ answer }}</span>
+    </div>
+  </div>
+</div>

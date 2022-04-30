@@ -12,6 +12,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { ParentsInfoComponent } from './parents-info/parents-info.component';
 import { FormComponent } from './form/form.component';
+import { QuizQuestionComponent } from './quiz/quiz-question/quiz-question.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormComponent } from './form/form.component';
     LandingPageComponent,
     QuizComponent,
     ParentsInfoComponent,
-    FormComponent
+    FormComponent,
+    QuizQuestionComponent
   ],
   imports: [
     BrowserModule,
