@@ -3,8 +3,11 @@
     <div class="question-counter">
       <span>{{ currentQuestionId }} / 10</span>
     </div>
-    <div class="question">
-      <app-quiz-question [data]="questions[currentQuestionId]" (voted)="onVoted($event)"></app-quiz-question>
+   <div class="question"> <!--[@nextQuestion]="currentQuestionId" -->
+      <app-quiz-question
+        [data]="questions[currentQuestionId]"
+        (voted)="onVoted($event)"
+      ></app-quiz-question>
     </div>
   </div>
   <app-quiz-results *ngIf="showResults" [points]="answers" [data]="results"></app-quiz-results>

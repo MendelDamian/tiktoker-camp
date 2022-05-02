@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { QuestionInterface } from './quiz-question/quiz-question.component';
-import {ResultInterface} from './quiz-results/quiz-results.component';
+import { ResultInterface } from './quiz-results/quiz-results.component';
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.css']
+  styleUrls: ['./quiz.component.css'],
 })
 export class QuizComponent {
   questions: Array<QuestionInterface> = [
@@ -171,9 +171,9 @@ export class QuizComponent {
   constructor() { }
 
   onVoted(option: number): void {
-    this.answers.push(option)
-    this.showResults = this.currentQuestionId === this.questions.length - 1
-    this.currentQuestionId = this.showResults ? this.currentQuestionId : this.currentQuestionId + 1
+    this.answers.push(option);
+    this.showResults = this.currentQuestionId === this.questions.length - 1;
+    this.currentQuestionId = this.showResults ? this.currentQuestionId : this.currentQuestionId + 1;
   }
 
 }

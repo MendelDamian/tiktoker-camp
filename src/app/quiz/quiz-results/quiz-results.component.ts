@@ -14,29 +14,14 @@ export class QuizResultsComponent implements OnChanges {
     content: ''
   }
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnChanges(): void {
     this.result = this.getResult();
-    }
-
-  customHash(): number {
-    let hash = 0;
-    let data = this.points.join(' ');
-
-    for (let i = 0; i < data.length; i++) {
-      let char = data.charCodeAt(i);
-      hash = (hash << 5) - hash + char;
-      hash = hash & hash;
-    }
-
-    return Math.abs(hash) ;
   }
 
   getResult(): ResultInterface {
-    console.log(this.points);
-    return this.results[this.customHash() % this.results.length];
+    return this.results[customHash(this.points.join(' ')) % this.results.length];
   }
 
 }

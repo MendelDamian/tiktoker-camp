@@ -1,4 +1,7 @@
-<div class="question-container d-flex flex-column col-md-10 col-xxl-6 mx-auto rounded">
+<div
+  class="question-container d-flex flex-column col-md-10 col-xxl-6 mx-auto rounded"
+  [@questionChange]="didVote"
+>
   <h2 class="rounded col-10 mx-auto">{{ data.title }}</h2>
   <img src="{{ data.imgSrc }}" alt="Obraz poglądowy dla pytania" class="img-fluid mx-auto">
   <div class="answers-container d-flex justify-content-around flex-wrap">
