@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, OnChanges } from '@angular/core';
+import { delay } from '../../../mixins/functions';
 
 import { trigger, state, style, animate, transition } from '@angular/animations';
 

@@ -1,8 +1,8 @@
-function delay(ms: number) {
+export function delay(ms: number) {
   return new Promise( resolve => setTimeout(resolve, ms) );
 }
 
-function customHash(data: string): number {
+export function customHash(data: string): number {
   let hash = 0;
 
   for (let i = 0; i < data.length; i++) {

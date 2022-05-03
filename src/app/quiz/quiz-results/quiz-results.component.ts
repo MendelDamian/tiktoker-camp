@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
+import { customHash } from '../../../mixins/functions';
+
 @Component({
   selector: 'app-quiz-results',
   templateUrl: './quiz-results.component.html',
