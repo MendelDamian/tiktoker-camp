@@ -113,54 +113,64 @@ export class QuizComponent {
 
   results: Array<ResultInterface> = [
     {
-      title: "Example Influencer 1",
+      name: "Example Influencer 1",
       imgSrc: "assets/dummy-img.png",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae."
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
+      preferAnswers: [0, 1, 2, 3, 1, 0, 2, 3, 0, 1]
     },
     {
-      title: "Example Influencer 2",
+      name: "Example Influencer 2",
       imgSrc: "assets/dummy-img.png",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae."
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
+      preferAnswers: [0, 1, 2, 3, 2, 0, 2, 2, 0, 2]
     },
     {
-      title: "Example Influencer 3",
+      name: "Example Influencer 3",
       imgSrc: "assets/dummy-img.png",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae."
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
+      preferAnswers: [0, 1, 0, 3, 1, 1, 2, 1, 0, 1]
     },
     {
-      title: "Example Influencer 4",
+      name: "Example Influencer 4",
       imgSrc: "assets/dummy-img.png",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae."
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
+      preferAnswers: [0, 0, 2, 0, 1, 0, 2, 3, 0, 0]
     },
     {
-      title: "Example Influencer 5",
+      name: "Example Influencer 5",
       imgSrc: "assets/dummy-img.png",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae."
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
+      preferAnswers: [2, 1, 2, 3, 1, 2, 2, 3, 0, 1]
     },
     {
-      title: "Example Influencer 6",
+      name: "Example Influencer 6",
       imgSrc: "assets/dummy-img.png",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae."
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
+      preferAnswers: [2, 1, 1, 2, 1, 0, 2, 3, 3, 1]
     },
     {
-      title: "Example Influencer 7",
+      name: "Example Influencer 7",
       imgSrc: "assets/dummy-img.png",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae."
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
+      preferAnswers: [0, 0, 1, 3, 2, 0, 2, 2, 0, 1]
     },
     {
-      title: "Example Influencer 8",
+      name: "Example Influencer 8",
       imgSrc: "assets/dummy-img.png",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae."
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
+      preferAnswers: [3, 1, 2, 3, 1, 3, 2, 3, 0, 3]
     },
     {
-      title: "Example Influencer 9",
+      name: "Example Influencer 9",
       imgSrc: "assets/dummy-img.png",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae."
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
+      preferAnswers: [0, 3, 3, 3, 1, 2, 2, 3, 0, 1]
     },
     {
-      title: "Example Influencer 10",
+      name: "Example Influencer 10",
       imgSrc: "assets/dummy-img.png",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae."
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
+      preferAnswers: [0, 1, 2, 3, 1, 0, 0, 0, 0, 0]
     }
   ]
 

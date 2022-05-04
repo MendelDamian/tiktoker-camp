@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
-import { customHash } from '../../../mixins/functions';
+// import { customHash } from '../../../mixins/functions';
 
 @Component({
   selector: 'app-quiz-results',
@@ -11,10 +11,12 @@ export class QuizResultsComponent implements OnChanges {
   @Input() points: Array<number> = []
   @Input('data') results: Array<ResultInterface> = []
   result: ResultInterface = {
-    title: '',
+    name: '',
     imgSrc: '',
-    content: ''
+    content: '',
+    preferAnswers: []
   }
+  predictions: Array<number> = []
 
   constructor() { }
 
@@ -23,13 +25,25 @@ export class QuizResultsComponent implements OnChanges {
   }
 
   getResult(): ResultInterface {
-    return this.results[customHash(this.points.join(' ')) % this.results.length];
+    this.results.forEach((influ, influ_id) => {
+      this.predictions.push(0);
+      this.points.forEach((point, point_id) => {
+        if (point === influ.preferAnswers[point_id]) {
+          this.predictions[influ_id] += influ.preferAnswers[point_id];
+        }
+      })
+    })
+
+    let id: number = this.predictions.indexOf(Math.max(...this.predictions))
+    return this.results[id];
+    // return this.results[customHash(this.points.join(' ')) % this.results.length];
   }
 
 }
 
 export interface ResultInterface {
-  title: string,
+  name: string,
   imgSrc: string,
-  content: string
+  content: string,
+  preferAnswers: Array<number>
 }
