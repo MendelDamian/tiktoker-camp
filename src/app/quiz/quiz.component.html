@@ -1,9 +1,9 @@
 <div class="quiz-container container text-center">
   <div *ngIf="!showResults">
     <div class="question-counter">
-      <span>{{ currentQuestionId }} / 10</span>
+      <span>{{ currentQuestionId }} / {{ numberOfQuestions }}</span>
     </div>
-   <div class="question"> <!--[@nextQuestion]="currentQuestionId" -->
+   <div class="question">
       <app-quiz-question
         [data]="questions[currentQuestionId]"
         (voted)="onVoted($event)"

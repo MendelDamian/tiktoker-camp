@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { QuestionInterface } from './quiz-question/quiz-question.component';
 import { ResultInterface } from './quiz-results/quiz-results.component';
-import questions from '/src/assets/quiz_questions.json';
-import results from '/src/assets/quiz_results.json';
+import questions from '/src/assets/quiz/quiz_questions.json';
+import results from '/src/assets/quiz/quiz_results.json';
 
 @Component({
   selector: 'app-quiz',
@@ -12,6 +12,7 @@ import results from '/src/assets/quiz_results.json';
 export class QuizComponent {
   questions: Array<QuestionInterface> = questions
   results: Array<ResultInterface> = results
+  numberOfQuestions: number = this.questions.length;
 
   currentQuestionId: number = 0;
   answers: Array<number> = []
