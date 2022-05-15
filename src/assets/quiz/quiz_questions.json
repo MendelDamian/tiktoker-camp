@@ -1,7 +1,7 @@
 [
   {
     "title": "Jesteś chłopakiem czy dziewczyną?",
-    "imgSrc": "assets/quiz/q1.png",
+    "imgSrc": "assets/quiz/q1.jpg",
     "answers": [
       "Chłopakiem",
       "Dziewczyną"
@@ -9,7 +9,7 @@
   },
   {
     "title": "Jesteś bardziej otwartą i śmiałą osobą, czy nieśmiałą i skrytą?",
-    "imgSrc": "assets/quiz/q2.png",
+    "imgSrc": "assets/quiz/q2.jpg",
     "answers": [
       "Otwarty/a",
       "Zamknięty/a"
@@ -17,7 +17,7 @@
   },
   {
     "title": "Według ciebie jaka jest twoja pozytywna cecha charakteru?",
-    "imgSrc": "assets/quiz/q3.png",
+    "imgSrc": "assets/quiz/q3.jpg",
     "answers": [
       "Szczerość",
       "Pracowitość",
@@ -27,7 +27,7 @@
   },
   {
     "title": "Czy masz rodzeństwo?",
-    "imgSrc": "assets/quiz/q4.png",
+    "imgSrc": "assets/quiz/q4.jpg",
     "answers": [
       "Tak",
       "Nie"
@@ -35,7 +35,7 @@
   },
   {
     "title": "Twoja ulubiona pora roku?",
-    "imgSrc": "assets/quiz/q5.png",
+    "imgSrc": "assets/quiz/q5.jpg",
     "answers": [
       "Wiosna",
       "Lato",
