@@ -1,62 +1,62 @@
 [
   {
-    "name": "Example Influencer 1",
-    "imgSrc": "assets/dummy-img.png",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
+    "name": "Gabriel Tadeusz \"Cesarz Narcyz\" Bystrycki",
+    "imgSrc": "assets/quiz/cesarz.jpg",
+    "content": "To internetowy twórca, który swoją działalność opiera głównie na Instagramie oraz na Tik Toku. Kiedyś próbował również swoich sił na YouTube, jednak szybko zrezygnował z tego pomysłu. Gabriel Tadeusz Bystrycki - bo tak naprawdę nazywa się Cesarz Narcyz, pochodzi z Lublina i należy także do Elita Check, czyli projektu przypominającego słynną Ekipę czy Team X.",
     "preferAnswers": [0, 1, 2, 1, 1]
   },
   {
-    "name": "Example Influencer 2",
-    "imgSrc": "assets/dummy-img.png",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
-    "preferAnswers": [0, 1, 2, 1, 2]
+    "name": "Robert Lewandowski",
+    "imgSrc": "assets/quiz/roberdzik.jpg",
+    "content": "Polski piłkarz grający na pozycji napastnika w niemieckim klubie Bayern Monachium oraz w reprezentacji Polski, w której pełni rolę kapitana.",
+    "preferAnswers": [3, 1, 2, 1, 2]
   },
   {
-    "name": "Example Influencer 3",
-    "imgSrc": "assets/dummy-img.png",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
-    "preferAnswers": [0, 1, 0, 0, 1]
+    "name": "Filip Zabielski",
+    "imgSrc": "assets/quiz/zabielski.jpg",
+    "content": "Filip Zabielski jeszcze do niedawna był uczestnikiem internetowego projektu, który nazywał się Dom TikTokerów i działał na bardzo zbliżonych zasadach, jak popularny Team X czy też Ekipa Friza. Brał również udział w programie Fame czy Shame opowiadającym o influecnerach, stworzonym dla Player.pl ",
+    "preferAnswers": [2, 1, 0, 0, 1]
   },
   {
-    "name": "Example Influencer 4",
-    "imgSrc": "assets/dummy-img.png",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
-    "preferAnswers": [0, 0, 2, 0, 1]
+    "name": "Weronika \"Wersow\" Sowa",
+    "imgSrc": "assets/quiz/wersow.jpg",
+    "content": "Jedna z najpopularniejszych polskich influencerek młodego pokolenia. Prywatnie jest związana z youtuberem - Frizem i jest także częścią ekipy założonej przez jej chłopaka. W 2019 roku kanał Wersow na YouTube przekroczył milion subskrypcji, a Weronika zdobyła ponad milion followersów na Instagramie.",
+    "preferAnswers": [1, 0, 2, 0, 1]
   },
   {
-    "name": "Example Influencer 5",
-    "imgSrc": "assets/dummy-img.png",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
-    "preferAnswers": [1, 1, 2, 1, 1]
+    "name": "Julia Żugaj",
+    "imgSrc": "assets/quiz/zugaj.jpg",
+    "content": "To znana TikTokerka, a także influencerka! Właśnie poprzez swoją największą pasję, jaką jest taniec, zdobyła popularność w sieci. Dziewczyna interesuje się również makijażem i modą, a efekty możemy podglądać na jej oficjalnym Instagramie.",
+    "preferAnswers": [2, 1, 2, 1, 1]
   },
   {
-    "name": "Example Influencer 6",
-    "imgSrc": "assets/dummy-img.png",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
-    "preferAnswers": [1, 1, 1, 0, 1]
+    "name": "Monika \"Mona Lisa\" Kociołek",
+    "imgSrc": "assets/quiz/kociolkowa.jpg",
+    "content": "Monika nagrywa TikToki, które są uwielbiane i chętnie oglądane przez internautów. To idolka niejednej nastolatki, która daje również czadu na Instagramie. Jej media społecznościowe śledzi sporo osób, dlatego śmiało można stwierdzić, że dziewczyna jest barwną i rozpoznawalną postacią w sieci.",
+    "preferAnswers": [0, 1, 1, 0, 1]
   },
   {
-    "name": "Example Influencer 7",
-    "imgSrc": "assets/dummy-img.png",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
-    "preferAnswers": [0, 1, 1, 1, 2]
+    "name": "Maria Jeleniewska",
+    "imgSrc": "assets/quiz/jeleniewska.jpg",
+    "content": "Maria Jeleniewska znana na TikToku jako Jeleniewska, swoją popularność zawdzięcza\nwłaśnie tej platformie i video typu lip - sync. Założyła kanał na Youtubie.\nPierwsze zdjęcie na Instagramie opublikowała w kwietniu 2016 roku.\nPochodzi z Poznania.",
+    "preferAnswers": [1, 1, 1, 1, 2]
   },
   {
-    "name": "Example Influencer 8",
-    "imgSrc": "assets/dummy-img.png",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
-    "preferAnswers": [1, 1, 2, 1, 1]
+    "name": "Natalia \"Natsu\" Karczmarczyk",
+    "imgSrc": "assets/quiz/natsu.jpg",
+    "content": "Youtuberka, instagramerka i idolka nastolatków. Współtworzy drugi po Ekipie Friza największy projekt na polskim YouTube. Natalia Karczmarczyk wkrótce rozpoczyna swój osobny projekt pod roboczą nazwą Natsu World.",
+    "preferAnswers": [3, 1, 2, 1, 1]
   },
   {
-    "name": "Example Influencer 9",
-    "imgSrc": "assets/dummy-img.png",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
-    "preferAnswers": [0, 0, 3, 0, 1]
+    "name": "Kacper Błoński",
+    "imgSrc": "assets/quiz/blonski.jpg",
+    "content": "Swój kanał na platformie Youtube Kacper Blonsky prowadzi od 2019 roku. Nagrywał między innymi z takimi youtuberami jak Blowek, Stuu czy Lexy Chaplin. Jego kariera nabrała tempa, gdy dołączył do Team X - grupy młodych twórców internetów, którzy zamieszkali wspólnie w ekskluzywnej willi pod Warszawą i przez pół roku nagrywali wspólnie rozmaite filmiki o tematyce rozrywkowej. Projekt ten miał trwać dwa lata, ale grupa rozpadła się w wyniku licznych konfliktów między jej członkami. Od tamtej pory Kacper rzadko publikuje na swoim kanale, a skupia się raczej na tworzeniu muzyki.",
+    "preferAnswers": [2, 0, 3, 0, 1]
   },
   {
-    "name": "Example Influencer 10",
-    "imgSrc": "assets/dummy-img.png",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, quae.",
-    "preferAnswers": [0, 1, 2, 0, 1]
+    "name": "Julia Kostera",
+    "imgSrc": "assets/quiz/kostera.jpg",
+    "content": "Julia Kostera od 2015 roku prowadzi swój kanał w serwisie YouTube. Medium, które przyniosło jej największą popularność, to Tik Tok. Na swoim kanale prezentuje unboxingi paczek z kosmetykami, vlogi, haule zakupowe, poradniki dotyczące działalności na Tik Toku, Q&A czy lookbooki. Jedną z największych pasji Julii jest moda.",
+    "preferAnswers": [1, 1, 2, 0, 1]
   }
 ]

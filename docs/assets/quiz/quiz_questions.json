@@ -1,10 +1,12 @@
 [
   {
-    "title": "Jesteś chłopakiem czy dziewczyną?",
+    "title": "Twoja ulubiona platforma?",
     "imgSrc": "assets/quiz/q1.jpg",
     "answers": [
-      "Chłopakiem",
-      "Dziewczyną"
+      "TikTok",
+      "Instagram",
+      "Twitter",
+      "YouTube"
     ]
   },
   {
