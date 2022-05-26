@@ -1,24 +1,23 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
-// import { customHash } from '../../../mixins/functions';
-
 @Component({
   selector: 'app-quiz-results',
   templateUrl: './quiz-results.component.html',
-  styleUrls: ['./quiz-results.component.css']
+  styleUrls: [ './quiz-results.component.css' ]
 })
 export class QuizResultsComponent implements OnChanges {
-  @Input() points: Array<number> = []
-  @Input('data') results: Array<ResultInterface> = []
+  @Input() points: Array<number> = [];
+  @Input('data') results: Array<ResultInterface> = [];
   result: ResultInterface = {
     name: '',
     imgSrc: '',
     content: '',
     preferAnswers: []
-  }
-  predictions: Array<number> = []
+  };
+  predictions: Array<number> = [];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnChanges(): void {
     this.result = this.getResult();
@@ -31,12 +30,11 @@ export class QuizResultsComponent implements OnChanges {
         if (point === influ.preferAnswers[point_id]) {
           this.predictions[influ_id] += influ.preferAnswers[point_id];
         }
-      })
-    })
+      });
+    });
 
-    let id: number = this.predictions.indexOf(Math.max(...this.predictions))
+    let id: number = this.predictions.indexOf(Math.max(...this.predictions));
     return this.results[id];
-    // return this.results[customHash(this.points.join(' ')) % this.results.length];
   }
 
 }

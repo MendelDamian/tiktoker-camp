@@ -7,18 +7,19 @@ import results from '/src/assets/quiz/quiz_results.json';
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.css'],
+  styleUrls: [ './quiz.component.css' ],
 })
 export class QuizComponent {
-  questions: Array<QuestionInterface> = questions
-  results: Array<ResultInterface> = results
+  questions: Array<QuestionInterface> = questions;
+  results: Array<ResultInterface> = results;
   numberOfQuestions: number = this.questions.length;
 
   currentQuestionId: number = 0;
-  answers: Array<number> = []
+  answers: Array<number> = [];
   showResults: boolean = false;
 
-  constructor() { }
+  constructor() {
+  }
 
   onVoted(option: number): void {
     this.answers.push(option);

@@ -1,12 +1,12 @@
-import { Component, EventEmitter, Input, Output, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { delay } from '../../../mixins/functions';
 
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-quiz-question',
   templateUrl: './quiz-question.component.html',
-  styleUrls: ['./quiz-question.component.css'],
+  styleUrls: [ './quiz-question.component.css' ],
   animations: [
     trigger('questionChange', [
       state('true', style({ transform: 'rotateX(10deg)', opacity: 0.2 })),
@@ -23,11 +23,12 @@ export class QuizQuestionComponent implements OnChanges {
     answers: [
       'Answer 1', 'Answer 2', 'Answer 3', 'Answer 4'
     ]
-  }
+  };
   @Output() voted = new EventEmitter<number>();
   didVote: boolean = false;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnChanges(): void {
     this.updateDidVote();
