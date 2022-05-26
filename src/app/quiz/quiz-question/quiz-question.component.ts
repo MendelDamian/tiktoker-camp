@@ -1,16 +1,16 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
-import { delay } from '../../../mixins/functions';
+import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
+import {delay} from '../../../mixins/functions';
 
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-quiz-question',
   templateUrl: './quiz-question.component.html',
-  styleUrls: [ './quiz-question.component.css' ],
+  styleUrls: ['./quiz-question.component.css'],
   animations: [
     trigger('questionChange', [
-      state('true', style({ transform: 'rotateX(10deg)', opacity: 0.2 })),
-      state('false', style({ transform: 'rotateX(0deg)', opacity: 1 })),
+      state('true', style({transform: 'rotateX(10deg)', opacity: 0.2})),
+      state('false', style({transform: 'rotateX(0deg)', opacity: 1})),
       transition('false => true', animate('0.1s')),
       transition('true => false', animate('0.2s')),
     ])

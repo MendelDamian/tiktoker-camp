@@ -5,7 +5,12 @@
   var __getOwnPropSymbols = Object.getOwnPropertySymbols;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
   var __propIsEnum = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value
+  }) : obj[key] = value;
   var __spreadValues = (a, b) => {
     for (var prop in b || (b = {}))
       if (__hasOwnProp.call(b, prop))
@@ -25,24 +30,29 @@
       this.original = original;
       this.cacheNamePrefix = cacheNamePrefix;
     }
+
     delete(cacheName) {
       return this.original.delete(`${this.cacheNamePrefix}:${cacheName}`);
     }
+
     has(cacheName) {
       return this.original.has(`${this.cacheNamePrefix}:${cacheName}`);
     }
+
     async keys() {
       const prefix = `${this.cacheNamePrefix}:`;
       const allCacheNames = await this.original.keys();
       const ownCacheNames = allCacheNames.filter((name) => name.startsWith(prefix));
       return ownCacheNames.map((name) => name.slice(prefix.length));
     }
+
     match(request, options) {
       return this.original.match(request, options);
     }
+
     async open(cacheName) {
       const cache = await this.original.open(`${this.cacheNamePrefix}:${cacheName}`);
-      return Object.assign(cache, { name: cacheName });
+      return Object.assign(cache, {name: cacheName});
     }
   };
 
@@ -54,29 +64,37 @@
       this.origin = parsedScopeUrl.origin;
       this.caches = new NamedCacheStorage(caches, `ngsw:${parsedScopeUrl.path}`);
     }
+
     newRequest(input, init) {
       return new Request(input, init);
     }
+
     newResponse(body, init) {
       return new Response(body, init);
     }
+
     newHeaders(headers) {
       return new Headers(headers);
     }
+
     isClient(source) {
       return source instanceof Client;
     }
+
     get time() {
       return Date.now();
     }
+
     normalizeUrl(url) {
       const parsed = this.parseUrl(url, this.scopeUrl);
       return parsed.origin === this.origin ? parsed.path : url;
     }
+
     parseUrl(url, relativeTo) {
       const parsed = !relativeTo ? new URL(url) : new URL(url, relativeTo);
-      return { origin: parsed.origin, path: parsed.pathname, search: parsed.search };
+      return {origin: parsed.origin, path: parsed.pathname, search: parsed.search};
     }
+
     timeout(ms) {
       return new Promise((resolve) => {
         setTimeout(() => resolve(), ms);
@@ -99,18 +117,21 @@
       this.cacheNamePrefix = "db";
       this.tables = /* @__PURE__ */ new Map();
     }
+
     "delete"(name) {
       if (this.tables.has(name)) {
         this.tables.delete(name);
       }
       return this.adapter.caches.delete(`${this.cacheNamePrefix}:${name}`);
     }
+
     async list() {
       const prefix = `${this.cacheNamePrefix}:`;
       const allCacheNames = await this.adapter.caches.keys();
       const dbCacheNames = allCacheNames.filter((name) => name.startsWith(prefix));
       return dbCacheNames.map((name) => name.slice(prefix.length));
     }
+
     async open(name, cacheQueryOptions) {
       if (!this.tables.has(name)) {
         const cache = await this.adapter.caches.open(`${this.cacheNamePrefix}:${name}`);
@@ -128,15 +149,19 @@
       this.cacheQueryOptions = cacheQueryOptions;
       this.cacheName = this.cache.name;
     }
+
     request(key) {
       return this.adapter.newRequest("/" + key);
     }
+
     "delete"(key) {
       return this.cache.delete(this.request(key), this.cacheQueryOptions);
     }
+
     keys() {
       return this.cache.keys().then((requests) => requests.map((req) => req.url.substr(1)));
     }
+
     read(key) {
       return this.cache.match(this.request(key), this.cacheQueryOptions).then((res) => {
         if (res === void 0) {
@@ -145,6 +170,7 @@
         return res.json();
       });
     }
+
     write(key, value) {
       return this.cache.put(this.request(key), this.adapter.newResponse(JSON.stringify(value)));
     }
@@ -152,7 +178,7 @@
 
   // bazel-out/k8-fastbuild-ST-2e5f3376adb5/bin/packages/service-worker/worker/src/api.mjs
   var UpdateCacheStatus;
-  (function(UpdateCacheStatus2) {
+  (function (UpdateCacheStatus2) {
     UpdateCacheStatus2[UpdateCacheStatus2["NOT_CACHED"] = 0] = "NOT_CACHED";
     UpdateCacheStatus2[UpdateCacheStatus2["CACHED_BUT_UNUSED"] = 1] = "CACHED_BUT_UNUSED";
     UpdateCacheStatus2[UpdateCacheStatus2["CACHED"] = 2] = "CACHED";
@@ -165,6 +191,7 @@
       this.isCritical = true;
     }
   };
+
   function errorToString(error) {
     if (error instanceof Error) {
       return `${error.message}
@@ -173,6 +200,7 @@ ${error.stack}`;
       return `${error}`;
     }
   }
+
   var SwUnrecoverableStateError = class extends SwCriticalError {
     constructor() {
       super(...arguments);
@@ -186,10 +214,12 @@ ${error.stack}`;
     const words32 = stringToWords32(utf8, Endian.Big);
     return _sha1(words32, utf8.length * 8);
   }
+
   function sha1Binary(buffer) {
     const words32 = arrayBufferToWords32(buffer, Endian.Big);
     return _sha1(words32, buffer.byteLength * 8);
   }
+
   function _sha1(words32, len) {
     const w = [];
     let [a, b, c, d, e] = [1732584193, 4023233417, 2562383102, 271733878, 3285377520];
@@ -211,22 +241,27 @@ ${error.stack}`;
     }
     return byteStringToHexString(words32ToByteString([a, b, c, d, e]));
   }
+
   function add32(a, b) {
     return add32to64(a, b)[1];
   }
+
   function add32to64(a, b) {
     const low = (a & 65535) + (b & 65535);
     const high = (a >>> 16) + (b >>> 16) + (low >>> 16);
     return [high >>> 16, high << 16 | low & 65535];
   }
+
   function rol32(a, count) {
     return a << count | a >>> 32 - count;
   }
+
   var Endian;
-  (function(Endian2) {
+  (function (Endian2) {
     Endian2[Endian2["Little"] = 0] = "Little";
     Endian2[Endian2["Big"] = 1] = "Big";
   })(Endian || (Endian = {}));
+
   function fk(index, b, c, d) {
     if (index < 20) {
       return [b & c | ~b & d, 1518500249];
@@ -239,6 +274,7 @@ ${error.stack}`;
     }
     return [b ^ c ^ d, 3395469782];
   }
+
   function stringToWords32(str, endian) {
     const size = str.length + 3 >>> 2;
     const words32 = [];
@@ -247,6 +283,7 @@ ${error.stack}`;
     }
     return words32;
   }
+
   function arrayBufferToWords32(buffer, endian) {
     const size = buffer.byteLength + 3 >>> 2;
     const words32 = [];
@@ -256,6 +293,7 @@ ${error.stack}`;
     }
     return words32;
   }
+
   function byteAt(str, index) {
     if (typeof str === "string") {
       return index >= str.length ? 0 : str.charCodeAt(index) & 255;
@@ -263,6 +301,7 @@ ${error.stack}`;
       return index >= str.byteLength ? 0 : str[index] & 255;
     }
   }
+
   function wordAt(str, index, endian) {
     let word = 0;
     if (endian === Endian.Big) {
@@ -276,9 +315,11 @@ ${error.stack}`;
     }
     return word;
   }
+
   function words32ToByteString(words32) {
     return words32.reduce((str, word) => str + word32ToByteString(word), "");
   }
+
   function word32ToByteString(word) {
     let str = "";
     for (let i = 0; i < 4; i++) {
@@ -286,6 +327,7 @@ ${error.stack}`;
     }
     return str;
   }
+
   function byteStringToHexString(str) {
     let hex = "";
     for (let i = 0; i < str.length; i++) {
@@ -313,6 +355,7 @@ ${error.stack}`;
       this.cache = adapter2.caches.open(`${cacheNamePrefix}:${config.name}:cache`);
       this.metadata = this.db.open(`${cacheNamePrefix}:${config.name}:meta`, config.cacheQueryOptions);
     }
+
     async cacheStatus(url) {
       const cache = await this.cache;
       const meta = await this.metadata;
@@ -330,6 +373,7 @@ ${error.stack}`;
       }
       return UpdateCacheStatus.CACHED;
     }
+
     async getCacheNames() {
       const [cache, metadata] = await Promise.all([
         this.cache,
@@ -337,6 +381,7 @@ ${error.stack}`;
       ]);
       return [cache.name, metadata.cacheName];
     }
+
     async handleFetch(req, _event) {
       const url = this.adapter.normalizeUrl(req.url);
       if (this.urls.indexOf(url) !== -1 || this.patterns.some((pattern) => pattern.test(url))) {
@@ -360,6 +405,7 @@ ${error.stack}`;
         return null;
       }
     }
+
     async needToRevalidate(req, res) {
       if (res.headers.has("Cache-Control")) {
         const cacheControl = res.headers.get("Cache-Control");
@@ -399,6 +445,7 @@ ${error.stack}`;
         return true;
       }
     }
+
     async fetchFromCacheOnly(url) {
       const cache = await this.cache;
       const metaTable = await this.metadata;
@@ -412,12 +459,14 @@ ${error.stack}`;
         metadata = await metaTable.read(request.url);
       } catch (e) {
       }
-      return { response, metadata };
+      return {response, metadata};
     }
+
     async unhashedResources() {
       const cache = await this.cache;
       return (await cache.keys()).map((request) => this.adapter.normalizeUrl(request.url)).filter((url) => !this.hashes.has(url));
     }
+
     async fetchAndCacheOnce(req, used = true) {
       if (this.inFlightRequests.has(req.url)) {
         return this.inFlightRequests.get(req.url);
@@ -433,7 +482,7 @@ ${error.stack}`;
           const cache = await this.cache;
           await cache.put(req, res.clone());
           if (!this.hashes.has(this.adapter.normalizeUrl(req.url))) {
-            const meta = { ts: this.adapter.time, used };
+            const meta = {ts: this.adapter.time, used};
             const metaTable = await this.metadata;
             await metaTable.write(req.url, meta);
           }
@@ -445,6 +494,7 @@ ${error.stack}`;
         this.inFlightRequests.delete(req.url);
       }
     }
+
     async fetchFromNetwork(req, redirectLimit = 3) {
       const res = await this.cacheBustedFetchFromNetwork(req);
       if (res["redirected"] && !!res.url) {
@@ -455,6 +505,7 @@ ${error.stack}`;
       }
       return res;
     }
+
     async cacheBustedFetchFromNetwork(req) {
       const url = this.adapter.normalizeUrl(req.url);
       if (this.hashes.has(url)) {
@@ -483,6 +534,7 @@ ${error.stack}`;
         return this.safeFetch(req);
       }
     }
+
     async maybeUpdate(updateFrom, req, cache) {
       const url = this.adapter.normalizeUrl(req.url);
       if (this.hashes.has(url)) {
@@ -495,9 +547,11 @@ ${error.stack}`;
       }
       return false;
     }
+
     cacheBust(url) {
       return url + (url.indexOf("?") === -1 ? "?" : "&") + "ngsw-cache-bust=" + Math.random();
     }
+
     async safeFetch(req) {
       try {
         return await this.scope.fetch(req);
@@ -538,7 +592,7 @@ ${error.stack}`;
             return;
           }
           await cache.put(req, res.response);
-          await metaTable.write(req.url, __spreadProps(__spreadValues({}, res.metadata), { used: false }));
+          await metaTable.write(req.url, __spreadProps(__spreadValues({}, res.metadata), {used: false}));
         }, Promise.resolve());
       }
     }
@@ -581,9 +635,11 @@ ${error.stack}`;
       }
       this.state = state;
     }
+
     get size() {
       return this.state.count;
     }
+
     pop() {
       if (this.state.tail === null) {
         return null;
@@ -592,6 +648,7 @@ ${error.stack}`;
       this.remove(url);
       return url;
     }
+
     remove(url) {
       const node = this.state.map[url];
       if (node === void 0) {
@@ -626,11 +683,12 @@ ${error.stack}`;
       this.state.count--;
       return true;
     }
+
     accessed(url) {
       if (this.state.head === url) {
         return;
       }
-      const node = this.state.map[url] || { url, next: null, previous: null };
+      const node = this.state.map[url] || {url, next: null, previous: null};
       if (this.state.map[url] !== void 0) {
         this.remove(url);
       }
@@ -659,6 +717,7 @@ ${error.stack}`;
       this.lruTable = this.db.open(`${cacheNamePrefix}:${config.name}:lru`, config.cacheQueryOptions);
       this.ageTable = this.db.open(`${cacheNamePrefix}:${config.name}:age`, config.cacheQueryOptions);
     }
+
     async lru() {
       if (this._lru === null) {
         const table = await this.lruTable;
@@ -670,6 +729,7 @@ ${error.stack}`;
       }
       return this._lru;
     }
+
     async syncLru() {
       if (this._lru === null) {
         return;
@@ -681,6 +741,7 @@ ${error.stack}`;
         this.debugHandler.log(err, `DataGroup(${this.config.name}@${this.config.version}).syncLru()`);
       }
     }
+
     async handleFetch(req, event) {
       if (!this.patterns.some((pattern) => pattern.test(req.url))) {
         return null;
@@ -708,6 +769,7 @@ ${error.stack}`;
           return this.safeFetch(req);
       }
     }
+
     async handleFetchWithPerformance(req, event, lru) {
       let res = null;
       const fromCache = await this.loadFromCache(req, lru);
@@ -723,13 +785,14 @@ ${error.stack}`;
       const [timeoutFetch, networkFetch] = this.networkFetchWithTimeout(req);
       res = await timeoutFetch;
       if (res === void 0) {
-        res = this.adapter.newResponse(null, { status: 504, statusText: "Gateway Timeout" });
+        res = this.adapter.newResponse(null, {status: 504, statusText: "Gateway Timeout"});
         event.waitUntil(this.safeCacheResponse(req, networkFetch, lru));
       } else {
         await this.safeCacheResponse(req, res, lru);
       }
       return res;
     }
+
     async handleFetchWithFreshness(req, event, lru) {
       const [timeoutFetch, networkFetch] = this.networkFetchWithTimeout(req);
       let res;
@@ -750,6 +813,7 @@ ${error.stack}`;
       }
       return networkFetch;
     }
+
     networkFetchWithTimeout(req) {
       if (this.config.timeoutMs !== void 0) {
         const networkFetch = this.scope.fetch(req);
@@ -777,6 +841,7 @@ ${error.stack}`;
         return [networkFetch, networkFetch];
       }
     }
+
     async safeCacheResponse(req, resOrPromise, lru, okToCacheOpaque) {
       try {
         const res = await resOrPromise;
@@ -788,6 +853,7 @@ ${error.stack}`;
       } catch (e) {
       }
     }
+
     async loadFromCache(req, lru) {
       const cache = await this.cache;
       let res = await cache.match(req, this.config.cacheQueryOptions);
@@ -797,7 +863,7 @@ ${error.stack}`;
           const age = this.adapter.time - (await ageTable.read(req.url)).age;
           if (age <= this.config.maxAge) {
             lru.accessed(req.url);
-            return { res, age };
+            return {res, age};
           }
         } catch (e) {
         }
@@ -807,6 +873,7 @@ ${error.stack}`;
       }
       return null;
     }
+
     async cacheResponse(req, res, lru, okToCacheOpaque = false) {
       if (!(res.ok || okToCacheOpaque && res.type === "opaque")) {
         return;
@@ -820,9 +887,10 @@ ${error.stack}`;
       lru.accessed(req.url);
       await (await this.cache).put(req, res.clone());
       const ageTable = await this.ageTable;
-      await ageTable.write(req.url, { age: this.adapter.time });
+      await ageTable.write(req.url, {age: this.adapter.time});
       await this.syncLru();
     }
+
     async cleanup() {
       await Promise.all([
         this.cache.then((cache) => this.adapter.caches.delete(cache.name)),
@@ -830,6 +898,7 @@ ${error.stack}`;
         this.lruTable.then((table) => this.db.delete(table.name))
       ]);
     }
+
     async getCacheNames() {
       const [cache, ageTable, lruTable] = await Promise.all([
         this.cache,
@@ -838,14 +907,16 @@ ${error.stack}`;
       ]);
       return [cache.name, ageTable.cacheName, lruTable.cacheName];
     }
+
     async clearCacheForUrl(url) {
       const [cache, ageTable] = await Promise.all([this.cache, this.ageTable]);
       await Promise.all([
-        cache.delete(this.adapter.newRequest(url, { method: "GET" }), this.config.cacheQueryOptions),
-        cache.delete(this.adapter.newRequest(url, { method: "HEAD" }), this.config.cacheQueryOptions),
+        cache.delete(this.adapter.newRequest(url, {method: "GET"}), this.config.cacheQueryOptions),
+        cache.delete(this.adapter.newRequest(url, {method: "HEAD"}), this.config.cacheQueryOptions),
         ageTable.delete(url)
       ]);
     }
+
     async safeFetch(req) {
       try {
         return this.scope.fetch(req);
@@ -860,9 +931,9 @@ ${error.stack}`;
 
   // bazel-out/k8-fastbuild-ST-2e5f3376adb5/bin/packages/service-worker/worker/src/app-version.mjs
   var BACKWARDS_COMPATIBILITY_NAVIGATION_URLS = [
-    { positive: true, regex: "^/.*$" },
-    { positive: false, regex: "^/.*\\.[^/]*$" },
-    { positive: false, regex: "^/.*__" }
+    {positive: true, regex: "^/.*$"},
+    {positive: false, regex: "^/.*\\.[^/]*$"},
+    {positive: false, regex: "^/.*__"}
   ];
   var AppVersion = class {
     constructor(scope2, adapter2, database, idle, debugHandler, manifest, manifestHash) {
@@ -896,9 +967,11 @@ ${error.stack}`;
         exclude: excludeUrls.map((spec) => new RegExp(spec.regex))
       };
     }
+
     get okay() {
       return this._okay;
     }
+
     async initializeFully(updateFrom) {
       try {
         await this.assetGroups.reduce(async (previous, group) => {
@@ -910,6 +983,7 @@ ${error.stack}`;
         throw err;
       }
     }
+
     async handleFetch(req, event) {
       const asset = await this.assetGroups.reduce(async (potentialResponse, group) => {
         const resp = await potentialResponse;
@@ -942,6 +1016,7 @@ ${error.stack}`;
       }
       return null;
     }
+
     isNavigationRequest(req) {
       if (req.mode !== "navigate") {
         return false;
@@ -954,6 +1029,7 @@ ${error.stack}`;
       const urlWithoutQueryOrHash = url.replace(/[?#].*$/, "");
       return this.navigationUrls.include.some((regex) => regex.test(urlWithoutQueryOrHash)) && !this.navigationUrls.exclude.some((regex) => regex.test(urlWithoutQueryOrHash));
     }
+
     async lookupResourceWithHash(url, hash) {
       if (!this.hashTable.has(url)) {
         return null;
@@ -964,6 +1040,7 @@ ${error.stack}`;
       const cacheState = await this.lookupResourceWithoutHash(url);
       return cacheState && cacheState.response;
     }
+
     lookupResourceWithoutHash(url) {
       return this.assetGroups.reduce(async (potentialResponse, group) => {
         const resp = await potentialResponse;
@@ -973,9 +1050,11 @@ ${error.stack}`;
         return group.fetchFromCacheOnly(url);
       }, Promise.resolve(null));
     }
+
     previouslyCachedResources() {
       return this.assetGroups.reduce(async (resources, group) => (await resources).concat(await group.unhashedResources()), Promise.resolve([]));
     }
+
     async recentCacheStatus(url) {
       return this.assetGroups.reduce(async (current, group) => {
         const status = await current;
@@ -989,6 +1068,7 @@ ${error.stack}`;
         return groupStatus;
       }, Promise.resolve(UpdateCacheStatus.NOT_CACHED));
     }
+
     async getCacheNames() {
       const allGroupCacheNames = await Promise.all([
         ...this.assetGroups.map((group) => group.getCacheNames()),
@@ -996,9 +1076,11 @@ ${error.stack}`;
       ]);
       return [].concat(...allGroupCacheNames);
     }
+
     get appData() {
       return this.manifest.appData || null;
     }
+
     acceptsTextHtml(req) {
       const accept = req.headers.get("Accept");
       if (accept === null) {
@@ -1019,6 +1101,7 @@ ${error.stack}`;
       this.debugLogA = [];
       this.debugLogB = [];
     }
+
     async handleFetch(req) {
       const [state, versions, idle] = await Promise.all([
         this.driver.debugState(),
@@ -1048,8 +1131,9 @@ ${this.formatDebugLog(this.debugLogA)}
 
 ${msgVersions}
 
-${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }) });
+${msgIdle}`, {headers: this.adapter.newHeaders({"Content-Type": "text/plain"})});
     }
+
     since(time) {
       if (time === null) {
         return "never";
@@ -1065,6 +1149,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       const millis = age % 1e3;
       return (days > 0 ? `${days}d` : "") + (hours > 0 ? `${hours}h` : "") + (minutes > 0 ? `${minutes}m` : "") + (seconds > 0 ? `${seconds}s` : "") + (millis > 0 ? `${millis}u` : "");
     }
+
     log(value, context = "") {
       if (this.debugLogA.length === DEBUG_LOG_BUFFER_SIZE) {
         this.debugLogB = this.debugLogA;
@@ -1073,11 +1158,13 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       if (typeof value !== "string") {
         value = this.errorToString(value);
       }
-      this.debugLogA.push({ value, time: this.adapter.time, context });
+      this.debugLogA.push({value, time: this.adapter.time, context});
     }
+
     errorToString(err) {
       return `${err.name}(${err.message}, ${err.stack})`;
     }
+
     formatDebugLog(log) {
       return log.map((entry) => `[${this.since(entry.time)}] ${entry.value} ${entry.context}`).join("\n");
     }
@@ -1098,6 +1185,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       this.lastRun = null;
       this.oldestScheduledAt = null;
     }
+
     async trigger() {
       var _a;
       this.lastTrigger = this.adapter.time;
@@ -1121,6 +1209,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       this.scheduled = null;
       await this.execute();
     }
+
     async execute() {
       this.lastRun = this.adapter.time;
       while (this.queue.length > 0) {
@@ -1142,8 +1231,9 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       this.empty = Promise.resolve();
       this.oldestScheduledAt = null;
     }
+
     schedule(desc, run) {
-      this.queue.push({ desc, run });
+      this.queue.push({desc, run});
       if (this.emptyResolve === null) {
         this.empty = new Promise((resolve) => {
           this.emptyResolve = resolve;
@@ -1153,9 +1243,11 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         this.oldestScheduledAt = this.adapter.time;
       }
     }
+
     get size() {
       return this.queue.length;
     }
+
     get taskDescriptions() {
       return this.queue.map((task) => task.desc);
     }
@@ -1170,6 +1262,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
   function isMsgCheckForUpdates(msg) {
     return msg.action === "CHECK_FOR_UPDATES";
   }
+
   function isMsgActivateUpdate(msg) {
     return msg.action === "ACTIVATE_UPDATE";
   }
@@ -1196,7 +1289,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
     "vibrate"
   ];
   var DriverReadyState;
-  (function(DriverReadyState2) {
+  (function (DriverReadyState2) {
     DriverReadyState2[DriverReadyState2["NORMAL"] = 0] = "NORMAL";
     DriverReadyState2[DriverReadyState2["EXISTING_CLIENTS_ONLY"] = 1] = "EXISTING_CLIENTS_ONLY";
     DriverReadyState2[DriverReadyState2["SAFE_MODE"] = 2] = "SAFE_MODE";
@@ -1232,7 +1325,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
           });
         })());
         if (this.scope.registration.active !== null) {
-          this.scope.registration.active.postMessage({ action: "INITIALIZE" });
+          this.scope.registration.active.postMessage({action: "INITIALIZE"});
         }
       });
       this.scope.addEventListener("fetch", (event) => this.onFetch(event));
@@ -1242,6 +1335,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       this.debugger = new DebugHandler(this, this.adapter);
       this.idle = new IdleScheduler(this.adapter, IDLE_DELAY, MAX_IDLE_DELAY, this.debugger);
     }
+
     onFetch(event) {
       const req = event.request;
       const scopeUrl = this.scope.registration.scope;
@@ -1270,6 +1364,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       }
       event.respondWith(this.handleFetch(event));
     }
+
     onMessage(event) {
       if (this.state === DriverReadyState.SAFE_MODE) {
         return;
@@ -1289,15 +1384,18 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         await this.handleMessage(data, event.source);
       })());
     }
+
     onPush(msg) {
       if (!msg.data) {
         return;
       }
       msg.waitUntil(this.handlePush(msg.data.json()));
     }
+
     onClick(event) {
       event.waitUntil(this.handleClick(event.notification, event.action));
     }
+
     async ensureInitialized(event) {
       if (this.initialized !== null) {
         return this.initialized;
@@ -1313,6 +1411,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         event.waitUntil(this.idle.trigger());
       }
     }
+
     async handleMessage(msg, from) {
       if (isMsgCheckForUpdates(msg)) {
         const action = this.checkForUpdate();
@@ -1322,6 +1421,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         await this.completeOperation(from, action, msg.nonce);
       }
     }
+
     async handlePush(data) {
       await this.broadcast({
         type: "PUSH",
@@ -1335,6 +1435,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       NOTIFICATION_OPTION_NAMES.filter((name) => desc.hasOwnProperty(name)).forEach((name) => options[name] = desc[name]);
       await this.scope.registration.showNotification(desc["title"], options);
     }
+
     async handleClick(notification, action) {
       var _a, _b, _c;
       notification.close();
@@ -1371,15 +1472,17 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       }
       await this.broadcast({
         type: "NOTIFICATION_CLICK",
-        data: { action, notification: options }
+        data: {action, notification: options}
       });
     }
+
     async getLastFocusedMatchingClient(scope2) {
-      const windowClients = await scope2.clients.matchAll({ type: "window" });
+      const windowClients = await scope2.clients.matchAll({type: "window"});
       return windowClients[0];
     }
+
     async completeOperation(client, promise, nonce) {
-      const response = { type: "OPERATION_COMPLETED", nonce };
+      const response = {type: "OPERATION_COMPLETED", nonce};
       try {
         client.postMessage(__spreadProps(__spreadValues({}, response), {
           result: await promise
@@ -1390,6 +1493,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         }));
       }
     }
+
     async updateClient(client) {
       const existing = this.clientVersionMap.get(client.id);
       if (existing === this.latestHash) {
@@ -1411,6 +1515,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       client.postMessage(notice);
       return true;
     }
+
     async handleFetch(event) {
       try {
         await this.ensureInitialized(event);
@@ -1450,6 +1555,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         event.waitUntil(this.idle.trigger());
       }
     }
+
     async initialize() {
       const table = await this.controlTable;
       let manifests, assignments, latest;
@@ -1469,9 +1575,9 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       } catch (_) {
         const manifest = await this.fetchLatestManifest();
         const hash = hashManifest(manifest);
-        manifests = { [hash]: manifest };
+        manifests = {[hash]: manifest};
         assignments = {};
-        latest = { latest: hash };
+        latest = {latest: hash};
         await Promise.all([
           table.write("manifests", manifests),
           table.write("assignments", assignments),
@@ -1509,12 +1615,14 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         }
       }));
     }
+
     lookupVersionByHash(hash, debugName = "lookupVersionByHash") {
       if (!this.versions.has(hash)) {
         throw new Error(`Invariant violated (${debugName}): want AppVersion for ${hash} but not loaded`);
       }
       return this.versions.get(hash);
     }
+
     async assignVersion(event) {
       const clientId = event.resultingClientId || event.clientId;
       if (clientId) {
@@ -1553,6 +1661,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         return this.lookupVersionByHash(this.latestHash, "assignVersion");
       }
     }
+
     async fetchLatestManifest(ignoreOfflineError = false) {
       const res = await this.safeFetch(this.adapter.newRequest("ngsw.json?ngsw-cache-bust=" + Math.random()));
       if (!res.ok) {
@@ -1567,10 +1676,12 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       this.lastUpdateCheck = this.adapter.time;
       return res.json();
     }
+
     async deleteAllCaches() {
       const cacheNames = await this.adapter.caches.keys();
       await Promise.all(cacheNames.map((name) => this.adapter.caches.delete(name)));
     }
+
     async scheduleInitialization(appVersion) {
       const initialize = async () => {
         try {
@@ -1585,6 +1696,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       }
       this.idle.schedule(`initialization(${appVersion.manifestHash})`, initialize);
     }
+
     async versionFailed(appVersion, err) {
       const broken = Array.from(this.versions.entries()).find(([hash, version]) => version === appVersion);
       if (broken === void 0) {
@@ -1596,6 +1708,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         this.stateMessage = `Degraded due to: ${errorToString(err)}`;
       }
     }
+
     async setupUpdate(manifest, hash) {
       try {
         const newVersion = new AppVersion(this.scope, this.adapter, this.db, this.idle, this.debugger, manifest, hash);
@@ -1618,6 +1731,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         throw e;
       }
     }
+
     async checkForUpdate() {
       let hash = "(unknown)";
       try {
@@ -1640,6 +1754,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         return false;
       }
     }
+
     async sync() {
       const table = await this.controlTable;
       const manifests = {};
@@ -1659,6 +1774,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         table.write("latest", latest)
       ]);
     }
+
     async cleanupCaches() {
       try {
         const activeClients = new Set((await this.scope.clients.matchAll()).map((client) => client.id));
@@ -1677,12 +1793,14 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         this.debugger.log(err, "cleanupCaches");
       }
     }
+
     async cleanupOldSwCaches() {
       const caches = this.adapter.caches.original;
       const cacheNames = await caches.keys();
       const oldSwCacheNames = cacheNames.filter((name) => /^ngsw:(?!\/)/.test(name));
       await Promise.all(oldSwCacheNames.map((name) => caches.delete(name)));
     }
+
     lookupResourceWithHash(url, hash) {
       return Array.from(this.versions.values()).reduce(async (prev, version) => {
         if (await prev !== null) {
@@ -1691,26 +1809,31 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         return version.lookupResourceWithHash(url, hash);
       }, Promise.resolve(null));
     }
+
     async lookupResourceWithoutHash(url) {
       await this.initialized;
       const version = this.versions.get(this.latestHash);
       return version ? version.lookupResourceWithoutHash(url) : null;
     }
+
     async previouslyCachedResources() {
       await this.initialized;
       const version = this.versions.get(this.latestHash);
       return version ? version.previouslyCachedResources() : [];
     }
+
     async recentCacheStatus(url) {
       const version = this.versions.get(this.latestHash);
       return version ? version.recentCacheStatus(url) : UpdateCacheStatus.NOT_CACHED;
     }
+
     mergeHashWithAppData(manifest, hash) {
       return {
         hash,
         appData: manifest.appData
       };
     }
+
     async notifyClientsAboutUnrecoverableState(appVersion, reason) {
       const broken = Array.from(this.versions.entries()).find(([hash, version]) => version === appVersion);
       if (broken === void 0) {
@@ -1721,10 +1844,11 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
       await Promise.all(affectedClients.map(async (clientId) => {
         const client = await this.scope.clients.get(clientId);
         if (client) {
-          client.postMessage({ type: "UNRECOVERABLE_STATE", reason });
+          client.postMessage({type: "UNRECOVERABLE_STATE", reason});
         }
       }));
     }
+
     async notifyClientsAboutVersionInstallationFailed(manifest, hash, error) {
       await this.initialized;
       const clients = await this.scope.clients.matchAll();
@@ -1736,6 +1860,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         });
       }));
     }
+
     async notifyClientsAboutVersionDetected(manifest, hash) {
       await this.initialized;
       const clients = await this.scope.clients.matchAll();
@@ -1744,9 +1869,10 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         if (version === void 0) {
           return;
         }
-        client.postMessage({ type: "VERSION_DETECTED", version: this.mergeHashWithAppData(manifest, hash) });
+        client.postMessage({type: "VERSION_DETECTED", version: this.mergeHashWithAppData(manifest, hash)});
       }));
     }
+
     async notifyClientsAboutVersionReady(manifest, hash) {
       await this.initialized;
       const clients = await this.scope.clients.matchAll();
@@ -1767,12 +1893,14 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         client.postMessage(notice);
       }));
     }
+
     async broadcast(msg) {
       const clients = await this.scope.clients.matchAll();
       clients.forEach((client) => {
         client.postMessage(msg);
       });
     }
+
     async debugState() {
       return {
         state: DriverReadyState[this.state],
@@ -1781,6 +1909,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         lastUpdateCheck: this.lastUpdateCheck
       };
     }
+
     async debugVersions() {
       return Array.from(this.versions.keys()).map((hash) => {
         const version = this.versions.get(hash);
@@ -1793,6 +1922,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         };
       });
     }
+
     async debugIdleState() {
       return {
         queue: this.idle.taskDescriptions,
@@ -1800,6 +1930,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         lastRun: this.idle.lastRun
       };
     }
+
     async safeFetch(req) {
       try {
         return await this.scope.fetch(req);
@@ -1811,6 +1942,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ "Content-Type": "text/plain" }
         });
       }
     }
+
     async getCacheNames() {
       const controlTable = await this.controlTable;
       const appVersions = Array.from(this.versions.values());

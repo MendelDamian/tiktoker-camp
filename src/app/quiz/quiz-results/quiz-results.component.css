@@ -7,3 +7,8 @@
   background-color: var(--bs-dark);
   padding: 10px 20px;
 }
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}

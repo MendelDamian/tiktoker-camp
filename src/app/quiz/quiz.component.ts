@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { QuestionInterface } from './quiz-question/quiz-question.component';
-import { ResultInterface } from './quiz-results/quiz-results.component';
+import {Component} from '@angular/core';
+import {QuestionInterface} from './quiz-question/quiz-question.component';
+import {ResultInterface} from './quiz-results/quiz-results.component';
 import questions from '/src/assets/quiz/quiz_questions.json';
 import results from '/src/assets/quiz/quiz_results.json';
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
-  styleUrls: [ './quiz.component.css' ],
+  styleUrls: ['./quiz.component.css'],
 })
 export class QuizComponent {
   questions: Array<QuestionInterface> = questions;

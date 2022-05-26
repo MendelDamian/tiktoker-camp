@@ -1,9 +1,9 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 
 @Component({
   selector: 'app-quiz-results',
   templateUrl: './quiz-results.component.html',
-  styleUrls: [ './quiz-results.component.css' ]
+  styleUrls: ['./quiz-results.component.css']
 })
 export class QuizResultsComponent implements OnChanges {
   @Input() points: Array<number> = [];

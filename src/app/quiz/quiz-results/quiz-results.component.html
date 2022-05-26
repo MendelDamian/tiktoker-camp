@@ -1,12 +1,11 @@
-<div class="quiz-results-container d-flex flex-column col-md-10 col-xxl-6 mx-auto">
-  <div class="header col-8 col-10 mx-auto">
-    <h1>Wynik:</h1>
+<div class="quiz-results-container d-flex flex-column col-sm-12 col-md-10 col-xxl-6 mx-auto">
+  <div class="header col-11 mx-auto mb-3">
     <h2>{{ result.name }}</h2>
   </div>
   <div class="col-10 mx-auto">
     <img src="{{ result.imgSrc }}" alt="{{ result.name }}" class="img-fluid">
   </div>
-  <div class="content col-10 mx-auto">
-    <span>{{ result.content }}</span>
+  <div class="content col-11 mx-auto mt-3">
+    <p>{{ result.content }}</p>
   </div>
 </div>

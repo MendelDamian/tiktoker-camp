@@ -1,14 +1,20 @@
 <div
-  class="question-container d-flex flex-column col-md-10 col-xxl-6 mx-auto rounded"
+  class="question-container col-md-10 col-xxl-6 mx-auto rounded"
   [@questionChange]="didVote"
 >
-  <div class="mx-auto col-10">
-    <h2 class="rounded">{{ data.title }}</h2>
-    <img src="{{ data.imgSrc }}" alt="Obraz poglądowy dla pytania" class="img-fluid">
+  <div class="mx-auto">
+    <div class="mb-3 col-11 mx-auto">
+      <h2 class="rounded p-3 col-12">{{ data.title }}</h2>
+    </div>
+    <div class="col-10 mx-auto">
+      <img alt="Obraz poglądowy dla pytania" class="img-fluid" src="{{ data.imgSrc }}">
+    </div>
   </div>
-  <div class="answers-container d-flex justify-content-around flex-wrap">
-    <div class="answer col-5 rounded" *ngFor="let answer of data.answers; let i = index" (click)="vote(i)">
-      <span class="btn btn-danger w-100">{{ answer }}</span>
+  <div class="answers-container d-flex justify-content-around flex-wrap mt-2">
+    <div *ngFor="let answer of data.answers; let i = index" class="col-6">
+      <div (click)="vote(i)" class="answer rounded mt-3 mx-auto">
+        <span class="btn btn-danger w-100">{{ answer }}</span>
+      </div>
     </div>
   </div>
 </div>

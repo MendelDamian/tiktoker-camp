@@ -3,7 +3,7 @@
     <div class="question-counter">
       <span>{{ currentQuestionId }} / {{ numberOfQuestions }}</span>
     </div>
-   <div class="question">
+    <div class="question">
       <app-quiz-question
         [data]="questions[currentQuestionId]"
         (voted)="onVoted($event)"

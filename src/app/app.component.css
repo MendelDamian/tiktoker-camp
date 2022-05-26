@@ -1,3 +1,7 @@
 footer a {
   color: rgb(220, 53, 69);
 }
+
+.container a {
+  font-size: 1.5rem;
+}
