@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {isPhonenumber, isName, validEmail} from "../../mixins/functions";
+import { Component } from '@angular/core';
+import { validateEmail, validateName, validatePhoneNumber } from '../../mixins/functions';
 
 @Component({
   selector: 'app-form',
@@ -7,90 +7,77 @@ import {isPhonenumber, isName, validEmail} from "../../mixins/functions";
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
-
   isValid: boolean = false;
-
-  formValid: FormValid = {
-    firstName: true,
-    lastName: true,
-    email: true,
-    phone: true,
-  }
-
   formData: FormData = {
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
-  }
+  };
+  cssProperties: Map<string, string> = new Map();
 
   constructor() {
+    this.cssProperties.set('none', '');
+    this.cssProperties.set('valid', 'is-valid');
+    this.cssProperties.set('invalid', 'is-invalid');
   }
 
   firstNameValid(): string {
     this.isValid = false;
     if (!this.formData.firstName.length) {
-      return "";
+      return this.cssProperties.get('none') || '';
     }
 
-    if (!isName(this.formData.firstName)) {
-      return "is-invalid";
+    if (!validateName(this.formData.firstName)) {
+      return this.cssProperties.get('invalid') || '';
     }
 
     this.isValid = true;
-    return "is-valid";
+    return this.cssProperties.get('valid') || '';
   }
 
   lastNameValid(): string {
     this.isValid = false;
     if (!this.formData.lastName.length) {
-      return "";
+      return this.cssProperties.get('none') || '';
     }
 
-    if (!isName(this.formData.lastName)) {
-      return "is-invalid";
+    if (!validateName(this.formData.lastName)) {
+      return this.cssProperties.get('invalid') || '';
     }
 
     this.isValid = true;
-    return "is-valid"
+    return this.cssProperties.get('valid') || '';
   }
 
   emailValid(): string {
     this.isValid = false;
     if (!this.formData.email.length) {
-      return "";
+      return this.cssProperties.get('none') || '';
     }
 
-    if (!validEmail(this.formData.email)) {
-      return "is-invalid";
+    if (!validateEmail(this.formData.email)) {
+      return this.cssProperties.get('invalid') || '';
     }
 
     this.isValid = true;
-    return "is-valid";
+    return this.cssProperties.get('valid') || '';
   }
 
   numberValid(): string {
     this.isValid = false;
     if (!this.formData.phone.length) {
-      return "";
+      return this.cssProperties.get('none') || '';
     }
 
-    if (!isPhonenumber(this.formData.phone)) {
-      return "is-invalid";
+    if (!validatePhoneNumber(this.formData.phone)) {
+      return 'is-invalid';
     }
 
     this.isValid = true;
-    return "is-valid";
+    return 'is-valid';
   }
 
-
-}
-
-export interface FormValid {
-  firstName: boolean,
-  lastName: boolean,
-  email: boolean,
-  phone: boolean,
 }
 
 export interface FormData {
@@ -99,4 +86,3 @@ export interface FormData {
   email: string,
   phone: string,
 }
-

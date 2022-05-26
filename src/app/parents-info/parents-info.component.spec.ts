@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {ParentsInfoComponent} from './parents-info.component';
+import { ParentsInfoComponent } from './parents-info.component';
 
 describe('ParentsInfoComponent', () => {
   let component: ParentsInfoComponent;

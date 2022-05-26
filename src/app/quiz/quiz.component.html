@@ -5,10 +5,10 @@
     </div>
     <div class="question">
       <app-quiz-question
-        [data]="questions[currentQuestionId]"
         (voted)="onVoted($event)"
+        [data]="questions[currentQuestionId]"
       ></app-quiz-question>
     </div>
   </div>
-  <app-quiz-results *ngIf="showResults" [points]="answers" [data]="results"></app-quiz-results>
+  <app-quiz-results *ngIf="showResults" [data]="results" [points]="answers"></app-quiz-results>
 </div>
