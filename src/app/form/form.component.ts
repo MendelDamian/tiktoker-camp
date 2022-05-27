@@ -14,12 +14,13 @@ export class FormComponent {
     email: '',
     phone: '',
   };
-  cssProperties: Map<string, string> = new Map();
+  cssProperties: Map<string, string> = new Map([
+    ['none', ''],
+    ['valid', 'is-valid'],
+    ['invalid', 'is-invalid'],
+  ]);
 
   constructor() {
-    this.cssProperties.set('none', '');
-    this.cssProperties.set('valid', 'is-valid');
-    this.cssProperties.set('invalid', 'is-invalid');
   }
 
   firstNameValid(): string {
@@ -80,7 +81,7 @@ export class FormComponent {
 
 }
 
-export interface FormData {
+interface FormData {
   firstName: string,
   lastName: string,
   email: string,
