@@ -7,83 +7,101 @@ import { validateEmail, validateName, validatePhoneNumber } from '../../mixins/f
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
-  isValid: boolean = false;
   formData: FormData = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
+    firstName: {
+      value: '',
+      valid: ValidationState.none,
+      errorMessages: [
+        'Pole wymagane.',
+        'Imię musi się zaczynać od wielkiej litery.',
+      ]
+    },
+    lastName: {
+      value: '',
+      valid: ValidationState.none,
+      errorMessages: [
+        'Pole wymagane.',
+        'Nazwisko musi się zaczynać od wielkiej litery.',
+      ]
+    },
+    email: {
+      value: '',
+      valid: ValidationState.none,
+      errorMessages: [
+        'Pole wymagane.',
+        'Niepoprawny adres email.',
+      ]
+    },
+    phone: {
+      value: '',
+      valid: ValidationState.none,
+      errorMessages: [
+        'Pole wymagane.',
+        'Niepoprawny numer telefonu.',
+        'Numer powinien składać się z 9 cyfr.',
+      ]
+    },
   };
-  cssProperties: Map<string, string> = new Map([
-    ['none', ''],
-    ['valid', 'is-valid'],
-    ['invalid', 'is-invalid'],
-  ]);
 
   constructor() {
   }
 
-  firstNameValid(): string {
-    this.isValid = false;
-    if (!this.formData.firstName.length) {
-      return this.cssProperties.get('none') || '';
-    }
-
-    if (!validateName(this.formData.firstName)) {
-      return this.cssProperties.get('invalid') || '';
-    }
-
-    this.isValid = true;
-    return this.cssProperties.get('valid') || '';
+  onClickHandler(): void {
+    console.log(this.formData);
   }
 
-  lastNameValid(): string {
-    this.isValid = false;
-    if (!this.formData.lastName.length) {
-      return this.cssProperties.get('none') || '';
+  firstNameValid(): void {
+    if (!this.formData.firstName.value.length || !validateName(this.formData.firstName.value)) {
+      this.formData.firstName.valid = ValidationState.invalid;
+      return;
     }
 
-    if (!validateName(this.formData.lastName)) {
-      return this.cssProperties.get('invalid') || '';
-    }
-
-    this.isValid = true;
-    return this.cssProperties.get('valid') || '';
+    this.formData.firstName.valid = ValidationState.valid;
   }
 
-  emailValid(): string {
-    this.isValid = false;
-    if (!this.formData.email.length) {
-      return this.cssProperties.get('none') || '';
+  lastNameValid(): void {
+    if (!this.formData.lastName.value.length || !validateName(this.formData.lastName.value)) {
+      this.formData.lastName.valid = ValidationState.invalid;
+      return;
     }
 
-    if (!validateEmail(this.formData.email)) {
-      return this.cssProperties.get('invalid') || '';
-    }
-
-    this.isValid = true;
-    return this.cssProperties.get('valid') || '';
+    this.formData.lastName.valid = ValidationState.valid;
   }
 
-  numberValid(): string {
-    this.isValid = false;
-    if (!this.formData.phone.length) {
-      return this.cssProperties.get('none') || '';
+  emailValid(): void {
+    if (!this.formData.email.value.length || !validateEmail(this.formData.email.value)) {
+      this.formData.email.valid = ValidationState.invalid;
+      return;
     }
 
-    if (!validatePhoneNumber(this.formData.phone)) {
-      return 'is-invalid';
-    }
+    this.formData.email.valid = ValidationState.valid;
+  }
 
-    this.isValid = true;
-    return 'is-valid';
+  phoneValid(): void {
+    if (!this.formData.phone.value.length || !validatePhoneNumber(this.formData.phone.value)) {
+      this.formData.phone.valid = ValidationState.invalid;
+    } else {
+      this.formData.phone.valid = ValidationState.valid;
+    }
   }
 
 }
 
 interface FormData {
-  firstName: string,
-  lastName: string,
-  email: string,
-  phone: string,
+  firstName: InputField,
+  lastName: InputField,
+  email: InputField,
+  phone: InputField,
+}
+
+interface InputField {
+  value: string,
+  valid: ValidationState,
+  errorMessages: Array<string>,
+}
+
+enum ValidationState {
+  none,
+  valid,
+  invalid,
 }

@@ -4,53 +4,97 @@
     <div class="col-md-6">
       <label class="form-label" for="firstName">Imię uczestnika</label>
       <input
-        [(ngModel)]="formData.firstName"
-        [ngClass]="firstNameValid()"
-        class="form-control"
-        id="firstName"
-        name="firstName"
-        required
-        type="text"
+          (input)="firstNameValid()"
+          [(ngModel)]="formData.firstName.value"
+          [class.is-invalid]="formData.firstName.valid == 2"
+          [class.is-valid]="formData.firstName.valid == 1"
+          class="form-control"
+          id="firstName"
+          name="firstName"
+          required
+          type="text"
       >
+      <div *ngIf="formData.firstName.valid == 2" class="error-messages">
+        <div *ngFor="let errMsg of formData.firstName.errorMessages">
+          <small class="text-danger">
+            {{ errMsg }}
+          </small>
+        </div>
+      </div>
     </div>
     <div class="col-md-6">
       <label class="form-label" for="lastName">Nazwisko uczestnika</label>
       <input
-        [(ngModel)]="formData.lastName"
-        [ngClass]="lastNameValid()"
-        class="form-control"
-        id="lastName"
-        name="lastName"
-        required
-        type="text"
+          (input)="lastNameValid()"
+          [(ngModel)]="formData.lastName.value"
+          [class.is-invalid]="formData.lastName.valid == 2"
+          [class.is-valid]="formData.lastName.valid == 1"
+          class="form-control"
+          id="lastName"
+          name="lastName"
+          required
+          type="text"
       >
+      <div *ngIf="formData.lastName.valid == 2" class="error-messages">
+        <div *ngFor="let errMsg of formData.lastName.errorMessages">
+          <small class="text-danger">
+            {{ errMsg }}
+          </small>
+        </div>
+      </div>
     </div>
     <div class="col-12">
       <label class="form-label" for="email">Email kontaktowy</label>
       <input
-        [(ngModel)]="formData.email"
-        [ngClass]="emailValid()"
-        class="form-control"
-        id="email"
-        name="email"
-        required
-        type="email"
+          (input)="emailValid()"
+          [(ngModel)]="formData.email.value"
+          [class.is-invalid]="formData.email.valid == 2"
+          [class.is-valid]="formData.email.valid == 1"
+          class="form-control"
+          id="email"
+          name="email"
+          required
+          type="email"
       >
+      <div *ngIf="formData.email.valid == 2" class="error-messages">
+        <div *ngFor="let errMsg of formData.email.errorMessages">
+          <small class="text-danger">
+            {{ errMsg }}
+          </small>
+        </div>
+      </div>
     </div>
     <div class="col-12">
       <label class="form-label" for="phone">Telefon kontaktowy</label>
       <input
-        [(ngModel)]="formData.phone"
-        [ngClass]="numberValid()"
-        class="form-control"
-        id="phone"
-        name="phone"
-        required
-        type="text"
+          (input)="phoneValid()"
+          [(ngModel)]="formData.phone.value"
+          [class.is-invalid]="formData.phone.valid == 2"
+          [class.is-valid]="formData.phone.valid == 1"
+          class="form-control"
+          id="phone"
+          name="phone"
+          required
+          type="text"
       >
+      <div *ngIf="formData.phone.valid == 2" class="error-messages">
+        <div *ngFor="let errMsg of formData.phone.errorMessages">
+          <small class="text-danger">
+            {{ errMsg }}
+          </small>
+        </div>
+      </div>
     </div>
     <div class="col-5 text-center mx-auto">
-      <button class="btn btn-danger w-100 p-2" id="button" type="submit">Zapisz się</button>
+      <!-- TODO: disabled depending on valid status -->
+      <button
+          (click)="onClickHandler()"
+          class="btn btn-danger w-100 p-2"
+          id="button"
+          type="submit"
+      >
+        Zapisz się
+      </button>
     </div>
   </form>
 </div>
