@@ -1,3 +1,11 @@
-div {
+.container {
   text-align: justify;
+}
+
+.map {
+  height: 400px;
+}
+
+h2 {
+  text-align: center;
 }
