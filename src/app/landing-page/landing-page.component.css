@@ -1,11 +1,107 @@
-#check-in-btn {
-  font-size: 2em;
+.hero {
+  background-image: url("/assets/hero.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 80%;
+  text-align: left;
 }
 
-#logo {
-  max-height: 500px;
+.hero-content {
+  padding: 80px 0;
 }
 
+.container-fluid {
+  padding: 0;
+}
+
+.title {
+  margin: 0 0 60px 0;
+}
+
+.title h1 {
+  font-size: 56px;
+  line-height: 64px;
+  font-weight: 900;
+  font-family: Lato, sans-serif;
+  color: #fff;
+}
+
+.title h2 {
+  font-size: 48px;
+  line-height: 64px;
+  font-weight: 300;
+  font-family: Lato, sans-serif;
+  color: #fff;
+}
+
+.title h1 img {
+  height: 100px;
+}
+
+.entry p {
+  font-size: 24px;
+  font-family: Lato, sans-serif;
+}
+
+.entry a {
+  font-size: 24px;
+  font-family: Lato, sans-serif;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin: 0;
+  }
+
+  .hero {
+    background-image: url("/assets/hero.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    text-align: left;
+  }
+
+  .hero-content {
+    padding: 20px 0;
+  }
+
+  .container-fluid {
+    padding: 0;
+    margin: 0;
+  }
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .title h1 {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 700;
+    font-family: Lato, sans-serif;
+    color: #fff;
+  }
+
+  .title h2 {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 300;
+    font-family: Lato, sans-serif;
+    color: #fff;
+  }
+
+  .title h1 img {
+    height: 50px;
+  }
+
+  .entry p {
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: Lato, sans-serif;
+  }
+
+}
 
 @media screen and (min-width: 768px) {
   .feature:nth-child(odd) .row div:first-child {

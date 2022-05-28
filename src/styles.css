@@ -3,7 +3,7 @@ p, span {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: rgb(220, 53, 69);
+  color: #ff004f;
 }
 
 /* Disable text selection */
@@ -15,4 +15,20 @@ h1, h2, h3, h4, h5, h6 {
   user-select: none;
   /* Non-prefixed version, currently
                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.color-red {
+  color: #ff004f;
+}
+
+.bgcolor-red {
+  background-color: #ff004a;
+}
+
+.color-blue {
+  color: #01f7ef;
+}
+
+.bgcolor-blue {
+  background-color: #01f7ef;
 }
