@@ -4,7 +4,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { ParentsInfoComponent } from './parents-info/parents-info.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'quiz', component: QuizComponent },
   { path: 'rodzice', component: ParentsInfoComponent },
