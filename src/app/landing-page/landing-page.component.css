@@ -1,8 +1,18 @@
 #check-in-btn {
-  padding: 20px;
   font-size: 2em;
 }
 
 #logo {
   max-height: 500px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .feature:nth-child(odd) .row div:first-child {
+    order: 2;
+  }
+
+  .feature:nth-child(odd) .row div:last-child {
+    order: 1;
+  }
 }
