@@ -47,7 +47,20 @@ export class FormComponent {
   }
 
   onClickHandler(): void {
-    console.log(this.formData);
+    this.firstNameValid();
+    this.lastNameValid();
+    this.emailValid();
+    this.phoneValid();
+
+    // Check if all fields are valid
+    if (this.formData.firstName.valid !== ValidationState.valid
+      || this.formData.lastName.valid !== ValidationState.valid
+      || this.formData.email.valid !== ValidationState.valid
+      || this.formData.phone.valid !== ValidationState.valid) {
+      return;
+    }
+
+    // TODO: Send data to server
   }
 
   firstNameValid(): void {
