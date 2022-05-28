@@ -15,7 +15,8 @@
 }
 
 .title {
-  margin: 0 0 60px 0;
+  margin: 0 0 10px 0;
+  text-align: left;
 }
 
 .title h1 {
@@ -43,10 +44,9 @@
   font-family: Lato, sans-serif;
 }
 
-.entry a {
+.title a {
   font-size: 24px;
   font-family: Lato, sans-serif;
-  color: #fff;
 }
 
 @media screen and (max-width: 768px) {
@@ -69,10 +69,6 @@
   .container-fluid {
     padding: 0;
     margin: 0;
-  }
-
-  .title {
-    margin-bottom: 20px;
   }
 
   .title h1 {
