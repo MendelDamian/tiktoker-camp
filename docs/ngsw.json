@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1653815644001,
+  "timestamp": 1653817557611,
   "index": "/tiktoker-camp/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/tiktoker-camp/favicon.ico",
         "/tiktoker-camp/index.html",
-        "/tiktoker-camp/main.650c6ff086ded903.js",
+        "/tiktoker-camp/main.52ec1340c0454118.js",
         "/tiktoker-camp/manifest.webmanifest",
         "/tiktoker-camp/polyfills.2d293c08f18feeca.js",
         "/tiktoker-camp/runtime.63fbf97c8a234e38.js",
@@ -62,7 +62,8 @@
         "/tiktoker-camp/assets/quiz/zugaj.jpg",
         "/tiktoker-camp/assets/silverware.png",
         "/tiktoker-camp/assets/tiktok-logo.png",
-        "/tiktoker-camp/assets/tiktok_sm.png"
+        "/tiktoker-camp/assets/tiktok_sm.png",
+        "/tiktoker-camp/hero.b763e59f6d2e97ee.jpeg"
       ],
       "patterns": []
     }
@@ -103,8 +104,9 @@
     "/tiktoker-camp/assets/tiktok-logo.png": "0d575368a5c095520f16bffdcbce9b2f033b9d3c",
     "/tiktoker-camp/assets/tiktok_sm.png": "42ae4086c5b9bb6f526d59bbf45852b6363c615f",
     "/tiktoker-camp/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/tiktoker-camp/index.html": "ba6421c66e357fbe8578370809a7c9a374cd880c",
-    "/tiktoker-camp/main.650c6ff086ded903.js": "919c52c0abf0cb41fcf25616d01ca13efd4b0c62",
+    "/tiktoker-camp/hero.b763e59f6d2e97ee.jpeg": "045eb888954fe0a421cd0d07cae4ce36d19a1a1f",
+    "/tiktoker-camp/index.html": "f142ec637bbea68c1c85c141d8fbf600bc390365",
+    "/tiktoker-camp/main.52ec1340c0454118.js": "be9aa3f9fe50018b46f42494790c7ee6930f3875",
     "/tiktoker-camp/manifest.webmanifest": "7c6947b9f5d39172e94ca8174e067e001b2fee2c",
     "/tiktoker-camp/polyfills.2d293c08f18feeca.js": "5da4679e50fb41482639e3eaa8cf38a7ac73e6f5",
     "/tiktoker-camp/runtime.63fbf97c8a234e38.js": "63e080dac40f90e407290557cc82be0065990732",
