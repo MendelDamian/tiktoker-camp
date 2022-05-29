@@ -4,6 +4,7 @@
   background-size: cover;
   background-position-y: 80%;
   text-align: left;
+  overflow-x: hidden;
 }
 
 .hero-content {
@@ -107,4 +108,17 @@
   .feature:nth-child(odd) .row div:last-child {
     order: 1;
   }
+}
+
+.feature {
+  margin-top: 50px;
+}
+
+.feature h3 {
+  text-transform: uppercase;
+}
+
+.feature img {
+  width: 85%;
+  height: auto;
 }
