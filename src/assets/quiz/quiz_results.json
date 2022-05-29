@@ -118,5 +118,17 @@
       0,
       1
     ]
+  },
+  {
+    "name": "Lila Janowska",
+    "imgSrc": "assets/quiz/lila.jpg",
+    "content": "Lila Janowska swoją przygodę z YouTube zaczęła dość wcześnie. Na kanale nie tylko pokazywała swój makijaż, ale także wprowadziła nas nieco do swojego życia. Aktualnie mieszka w Warszawie. Jest on również dziewczyną popularnego rapera Żabsona.",
+    "preferAnswers": [
+      0,
+      1,
+      3,
+      0,
+      1
+    ]
   }
 ]
