@@ -9,6 +9,8 @@ import { DatabaseService } from '../database.service';
 })
 export class FormComponent {
   createuser_err: ValidationState = ValidationState.none;
+  loading: boolean = false;
+
   formData: FormData = {
     firstName: {
       value: '',
@@ -49,6 +51,8 @@ export class FormComponent {
   }
 
   onClickHandler(): void {
+    this.loading = true;
+
     this.firstNameValid();
     this.lastNameValid();
     this.emailValid();
@@ -59,6 +63,7 @@ export class FormComponent {
       || this.formData.lastName.valid !== ValidationState.valid
       || this.formData.email.valid !== ValidationState.valid
       || this.formData.phone.valid !== ValidationState.valid) {
+      this.loading = false;
       return;
     }
 
@@ -66,6 +71,7 @@ export class FormComponent {
     this.database.createUser(this.formData).subscribe(create_res => {
       if (create_res.id) {
         this.database.updateUser(create_res.id, this.formData).subscribe(update_res => {
+          this.loading = false;
           if (update_res.err) {
             this.createuser_err = ValidationState.invalid;
           } else {
@@ -73,6 +79,7 @@ export class FormComponent {
           }
         });
       } else {
+        this.loading = false;
         this.createuser_err = ValidationState.invalid;
       }
     });
