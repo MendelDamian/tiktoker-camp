@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { validateEmail, validateName, validatePhoneNumber } from '../../mixins/functions';
+import { DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-form',
@@ -7,6 +8,7 @@ import { validateEmail, validateName, validatePhoneNumber } from '../../mixins/f
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
+  createuser_err: ValidationState = ValidationState.none;
   formData: FormData = {
     firstName: {
       value: '',
@@ -43,7 +45,7 @@ export class FormComponent {
     },
   };
 
-  constructor() {
+  constructor(private database: DatabaseService) {
   }
 
   onClickHandler(): void {
@@ -60,7 +62,31 @@ export class FormComponent {
       return;
     }
 
-    // TODO: Send data to server
+    this.createuser_err = ValidationState.none;
+    this.database.createUser(this.formData).subscribe(create_res => {
+      if (create_res.id) {
+        this.database.updateUser(create_res.id, this.formData).subscribe(update_res => {
+          if (update_res.err) {
+            this.createuser_err = ValidationState.invalid;
+          } else {
+            this.createuser_err = ValidationState.valid;
+          }
+        });
+      } else {
+        this.createuser_err = ValidationState.invalid;
+      }
+    });
+
+    this.formData.firstName.value = '';
+    this.formData.lastName.value = '';
+    this.formData.email.value = '';
+    this.formData.phone.value = '';
+
+    this.formData.firstName.valid = 0;
+    this.formData.lastName.valid = 0;
+    this.formData.email.valid = 0;
+    this.formData.phone.valid = 0;
+
   }
 
   firstNameValid(): void {
@@ -100,7 +126,7 @@ export class FormComponent {
 
 }
 
-interface FormData {
+export interface FormData {
   firstName: InputField,
   lastName: InputField,
   email: InputField,
@@ -118,3 +144,5 @@ enum ValidationState {
   valid,
   invalid,
 }
+
+

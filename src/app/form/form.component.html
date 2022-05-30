@@ -94,6 +94,16 @@
       >
         Zapisz się
       </button>
+      <div *ngIf="createuser_err == 1">
+        <span class="text-success">
+          Utworzono użytkownika!
+        </span>
+      </div>
+      <div *ngIf="createuser_err == 2">
+        <span class="text-warning">
+          Nie utworzono użytkownika!
+        </span>
+      </div>
     </div>
   </form>
 </div>
