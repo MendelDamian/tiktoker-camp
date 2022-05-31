@@ -98,11 +98,11 @@
 }
 
 @media screen and (min-width: 768px) {
-  .feature:nth-child(odd) .row div:first-child {
+  .feature:nth-of-type(odd) .row div:first-child {
     order: 2;
   }
 
-  .feature:nth-child(odd) .row div:last-child {
+  .feature:nth-of-type(odd) .row div:last-child {
     order: 1;
   }
 }

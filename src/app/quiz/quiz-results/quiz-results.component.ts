@@ -14,7 +14,6 @@ export class QuizResultsComponent implements OnChanges {
     content: '',
     preferAnswers: []
   };
-  predictions: Array<number> = [];
 
   constructor() {
   }
@@ -24,16 +23,26 @@ export class QuizResultsComponent implements OnChanges {
   }
 
   getResult(): ResultInterface {
+    // Pick random result with the highest points
+    let predictions: Array<number> = [];
     this.results.forEach((influ, influ_id) => {
-      this.predictions.push(0);
+      predictions.push(0);
       this.points.forEach((point, point_id) => {
         if (point === influ.preferAnswers[point_id]) {
-          this.predictions[influ_id] += influ.preferAnswers[point_id];
+          predictions[influ_id]++;
         }
       });
     });
 
-    let id: number = this.predictions.indexOf(Math.max(...this.predictions));
+    let max = Math.max(...predictions);
+    let indexes: Array<number> = [];
+    predictions.forEach((prediction, index) => {
+      if (prediction === max) {
+        indexes.push(index);
+      }
+    });
+
+    let id: number = indexes[Math.floor(Math.random() * indexes.length)];
     return this.results[id];
   }
 
