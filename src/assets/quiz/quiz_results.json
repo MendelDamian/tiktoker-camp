@@ -1,5 +1,17 @@
 [
   {
+    "name": "Ewa Zawada",
+    "imgSrc": "assets/quiz/zawada.jpg",
+    "content": "Ewa to królowa tańca i trendów na TikToku. Niezwykle energiczna i ciepła osoba, która swoją pozytywną energię przekazuje codziennie milionom obserwatorów. TikTokerka jest prawdziwym specem od efektywnych slow-mo i potrafi odtworzyć w kreatywny sposób każdy, ale to każdy trend! Ewa znana jest także ze swojej bliskiej relacji z obserwatorami.",
+    "preferAnswers": [
+      0,
+      0,
+      2,
+      1,
+      1
+    ]
+  },
+  {
     "name": "Gabriel Tadeusz \"Cesarz Narcyz\" Bystrycki",
     "imgSrc": "assets/quiz/cesarz.jpg",
     "content": "To internetowy twórca, który swoją działalność opiera głównie na Instagramie oraz na Tik Toku. Kiedyś próbował również swoich sił na YouTube, jednak szybko zrezygnował z tego pomysłu. Gabriel Tadeusz Bystrycki - bo tak naprawdę nazywa się Cesarz Narcyz, pochodzi z Lublina i należy także do Elita Check, czyli projektu przypominającego słynną Ekipę czy Team X.",
@@ -8,7 +20,19 @@
       1,
       2,
       1,
-      1
+      3
+    ]
+  },
+  {
+    "name": "Damian Tkaczuk",
+    "imgSrc": "assets/quiz/tkaczuk.jpg",
+    "content": "Damian Tkaczuk to jeden z popularniejszych TikTokerów. Pochodzący z Gdańska użytkownik muzycznej aplikacji, skradł serca wszystkich użytkowników muzycznej aplikacji, dzięki swojej zabawnej serii wideo. Mowa o wcielaniu się przez niego w pracownika sklepu odzieżowego Zara, który jest zawsze niemiły dla klientów.",
+    "preferAnswers": [
+      3,
+      1,
+      0,
+      0,
+      0
     ]
   },
   {
