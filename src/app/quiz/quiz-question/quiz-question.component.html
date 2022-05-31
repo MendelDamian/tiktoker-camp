@@ -13,7 +13,7 @@
   <div class="answers-container d-flex justify-content-around flex-wrap mt-2">
     <div *ngFor="let answer of data.answers; let i = index" class="col-6">
       <div (click)="vote(i)" class="answer rounded mt-3 mx-auto">
-        <span class="btn btn-danger w-100">{{ answer }}</span>
+        <span class="btn btn-danger bgcolor-red w-100">{{ answer }}</span>
       </div>
     </div>
   </div>
