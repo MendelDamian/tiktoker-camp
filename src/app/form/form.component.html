@@ -4,20 +4,20 @@
     <div class="col-md-6">
       <label class="form-label" for="firstName">Imię uczestnika</label>
       <input
-          (input)="firstNameValid()"
+          (input)="validate('firstName')"
           [(ngModel)]="formData.firstName.value"
-          [class.is-invalid]="formData.firstName.valid == 2"
-          [class.is-valid]="formData.firstName.valid == 1"
+          [class.is-invalid]="formData.firstName.valid === validationState.invalid"
+          [class.is-valid]="formData.firstName.valid === validationState.valid"
           class="form-control"
           id="firstName"
           name="firstName"
           required
           type="text"
       >
-      <div *ngIf="formData.firstName.valid == 2" class="error-messages">
-        <div *ngFor="let errMsg of formData.firstName.errorMessages">
-          <small class="text-danger">
-            {{ errMsg }}
+      <div *ngIf="formData.firstName.valid === validationState.invalid" class="error-messages">
+        <div *ngFor="let validation of formData.firstName.validation">
+          <small *ngIf="validation.state === validationState.invalid" class="text-danger">
+            {{ validation.errorMessage }}
           </small>
         </div>
       </div>
@@ -25,20 +25,20 @@
     <div class="col-md-6">
       <label class="form-label" for="lastName">Nazwisko uczestnika</label>
       <input
-          (input)="lastNameValid()"
+          (input)="validate('lastName')"
           [(ngModel)]="formData.lastName.value"
-          [class.is-invalid]="formData.lastName.valid == 2"
-          [class.is-valid]="formData.lastName.valid == 1"
+          [class.is-invalid]="formData.lastName.valid === validationState.invalid"
+          [class.is-valid]="formData.lastName.valid === validationState.valid"
           class="form-control"
           id="lastName"
           name="lastName"
           required
           type="text"
       >
-      <div *ngIf="formData.lastName.valid == 2" class="error-messages">
-        <div *ngFor="let errMsg of formData.lastName.errorMessages">
-          <small class="text-danger">
-            {{ errMsg }}
+      <div *ngIf="formData.lastName.valid === validationState.invalid" class="error-messages">
+        <div *ngFor="let validation of formData.lastName.validation">
+          <small *ngIf="validation.state === validationState.invalid" class="text-danger">
+            {{ validation.errorMessage }}
           </small>
         </div>
       </div>
@@ -46,20 +46,20 @@
     <div class="col-12">
       <label class="form-label" for="email">Email kontaktowy</label>
       <input
-          (input)="emailValid()"
+          (input)="validate('email')"
           [(ngModel)]="formData.email.value"
-          [class.is-invalid]="formData.email.valid == 2"
-          [class.is-valid]="formData.email.valid == 1"
+          [class.is-invalid]="formData.email.valid === validationState.invalid"
+          [class.is-valid]="formData.email.valid === validationState.valid"
           class="form-control"
           id="email"
           name="email"
           required
           type="email"
       >
-      <div *ngIf="formData.email.valid == 2" class="error-messages">
-        <div *ngFor="let errMsg of formData.email.errorMessages">
-          <small class="text-danger">
-            {{ errMsg }}
+      <div *ngIf="formData.email.valid === validationState.invalid" class="error-messages">
+        <div *ngFor="let validation of formData.email.validation">
+          <small *ngIf="validation.state === validationState.invalid" class="text-danger">
+            {{ validation.errorMessage }}
           </small>
         </div>
       </div>
@@ -67,20 +67,21 @@
     <div class="col-12">
       <label class="form-label" for="phone">Telefon kontaktowy</label>
       <input
-          (input)="phoneValid()"
+          (input)="validate('phone')"
           [(ngModel)]="formData.phone.value"
-          [class.is-invalid]="formData.phone.valid == 2"
-          [class.is-valid]="formData.phone.valid == 1"
+          [class.is-invalid]="formData.phone.valid === validationState.invalid"
+          [class.is-valid]="formData.phone.valid === validationState.valid"
+          autocomplete="off"
           class="form-control"
           id="phone"
           name="phone"
           required
           type="text"
       >
-      <div *ngIf="formData.phone.valid == 2" class="error-messages">
-        <div *ngFor="let errMsg of formData.phone.errorMessages">
-          <small class="text-danger">
-            {{ errMsg }}
+      <div *ngIf="formData.phone.valid === validationState.invalid" class="error-messages">
+        <div *ngFor="let validation of formData.phone.validation">
+          <small *ngIf="validation.state === validationState.invalid" class="text-danger">
+            {{ validation.errorMessage }}
           </small>
         </div>
       </div>
@@ -98,14 +99,14 @@
           <span *ngIf="!loading">Zapisz się</span>
         </button>
       </div>
-      <div *ngIf="createuser_err == 1" class="mt-3">
-        <span class="message text-success">
-          Użytkownik został utworzony!
+      <div *ngIf="createUserErr === validationState.valid" class="mt-3">
+        <span class="message text-success fw-bold">
+          Uczestnik został poprawnie zapisany na TIKTOKER CAMP!
         </span>
       </div>
-      <div *ngIf="createuser_err == 2" class="mt-3">
-        <span class="message text-warning">
-          Użytkownik o takiej nazwie już istnieje!
+      <div *ngIf="createUserErr === validationState.invalid" class="mt-3">
+        <span class="message text-warning fw-bold">
+          Znaleźliśmy już takiego uczestnika w naszej bazie!
         </span>
       </div>
     </div>
