@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
 
-import { AppRoutingModule, routes } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { QuizComponent } from './quiz/quiz.component';
@@ -17,7 +17,6 @@ import { QuizQuestionComponent } from './quiz/quiz-question/quiz-question.compon
 import { QuizResultsComponent } from './quiz/quiz-results/quiz-results.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -34,9 +33,6 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes, {
-      anchorScrolling: 'enabled'
-    }),
     FontAwesomeModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('./ngsw-worker.js', {

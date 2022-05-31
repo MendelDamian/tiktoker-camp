@@ -3,7 +3,7 @@ p, span {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #ff004f;
+  color: rgb(220, 53, 69);
 }
 
 /* Disable text selection */
