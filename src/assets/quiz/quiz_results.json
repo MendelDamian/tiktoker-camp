@@ -154,5 +154,65 @@
       0,
       1
     ]
+  },
+  {
+    "name": "Addison Rae",
+    "imgSrc": "assets/quiz/addison.jpg",
+    "content": "Addison Rae jest jedną z największych gwiazd TikToka, a jej poczynania na popularnej platformie śledzi już ponad 65 milionów followersów. W sierpniu 2020 roku magazyn Forbes przedstawił ją jako najlepiej zarabiającą użytkowniczkę aplikacji, która dzięki monetyzowaniu swojej popularności zarobiła ponad 5 milionów dolarów w ciągu 12 miesięcy.",
+    "preferAnswers": [
+      3,
+      1,
+      3,
+      0,
+      2
+    ]
+  },
+  {
+    "name": "Khaby Lame",
+    "imgSrc": "assets/quiz/khaby.jpg",
+    "content": "Stał się najbardziej znany ze swoich krótkich skeczy, sarkastycznie przedstawiających osoby, które wydają się nadmiernie komplikować proste zadania. Według stanu na sierpień 2021, jego konto jest drugim najczęściej obserwowanym kontem na TikToku.",
+    "preferAnswers": [
+      1,
+      0,
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "name": "Brooke Monk",
+    "imgSrc": "assets/quiz/brooke.jpg",
+    "content": "Słynny twórca treści TikTok, w ciągu tych pierwszych pięciu miesięcy zdobyła na swoim koncie 3 miliony obserwujących. Obecnie jest uważana za jedną z najpopularniejszych nastolatków TikTok z ogromną liczbą obserwujących wynoszącą 7.3 miliona.",
+    "preferAnswers": [
+      2,
+      0,
+      2,
+      0,
+      3
+    ]
+  },
+  {
+    "name": "Natan Marcoń",
+    "imgSrc": "assets/quiz/marcon.jpg",
+    "content": "Jest Bogiem Estetyki. Jego celem jest motywowanie ludzi do ćwiczeń, zdrowego oraz estetycznego stylu życia. Ilość jego polubień na platformie TikTok sięga aż 4,2 miliona.",
+    "preferAnswers": [
+      2,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "name": "Krystian \"MrKryha\" Sawicki",
+    "imgSrc": "assets/quiz/mrkryha.jpg",
+    "content": "Co to za 180 centymetrowy potwór, skąd wiem bo zmierzyłem. Krystian to popularny w ostatnim czasie twórca platformy TikTok. Jego filmiki polegają głównie na ocenie jedzenia, zwłaszcza kebabów.",
+    "preferAnswers": [
+      0,
+      0,
+      0,
+      0,
+      3
+    ]
   }
 ]
