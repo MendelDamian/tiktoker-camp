@@ -3,7 +3,7 @@ export function delay(ms: number) {
 }
 
 export function validateUpperCaseOnlyOnBeginning(char: string, n: (number | undefined)): boolean {
-  return /^[A-Z][a-z]*$/.test(char);
+  return /^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśżź]*$/.test(char);
 }
 
 export function validateEmail(str: string, n: (number | undefined)): boolean {
@@ -11,7 +11,7 @@ export function validateEmail(str: string, n: (number | undefined)): boolean {
 }
 
 export function validateStartsWithUpperCase(str: string, n: (number | undefined)): boolean {
-  return /^[A-Z]/.test(str);
+  return /^[A-ZĄĆĘŁŃÓŚŹŻ]/.test(str);
 }
 
 export function validateMinLength(str: string, n: (number | undefined)): boolean {
@@ -23,7 +23,7 @@ export function validateMaxLength(str: string, n: (number | undefined)): boolean
 }
 
 export function validateLettersOnly(str: string, n: (number | undefined)): boolean {
-  return /^[a-zA-Z]+$/.test(str);
+  return /^[a-zA-ZąćęłńóśżźĄĆĘŁŃÓŚŹŻ]+$/.test(str);
 }
 
 export function validateNumbersOnly(str: string, n: (number | undefined)): boolean {
