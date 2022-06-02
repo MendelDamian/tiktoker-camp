@@ -6,6 +6,8 @@
   font-size: 1.25em;
 }
 
-#copyright {
-  font-size: 0.95em;
+@media screen and (max-width: 385px) {
+  #copyright {
+    font-size: 0.9em;
+  }
 }

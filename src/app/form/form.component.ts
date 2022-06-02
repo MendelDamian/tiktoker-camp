@@ -154,6 +154,7 @@ export class FormComponent {
 
   onClickHandler(): void {
     this.loading = true;
+    this.createUserErr = ValidationState.none;
 
     this.validate('firstName');
     this.validate('lastName');
@@ -169,7 +170,6 @@ export class FormComponent {
       return;
     }
 
-    this.createUserErr = ValidationState.none;
     this.database.createUser(this.formData).subscribe(create_res => {
       if (create_res.id) {
         this.database.updateUser(create_res.id, this.formData).subscribe(update_res => {
